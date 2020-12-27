@@ -118,7 +118,8 @@ function App() {
                     id="value-dolar"
                     type="number"
                     onChange={(event) => {
-                        setPurchaseValueInDolar(parseFloat(event.target.value))
+                        if (parseFloat(event.target.value) >= 0)
+                        setPurchaseValueInDolar(parseFloat(event.target.value) || 0)
                     }}
                     value={purchaseValueInDolar}
                     label="Valor em dólar $" />
@@ -128,7 +129,8 @@ function App() {
                     className={classes.input}
                     type="number"
                     onChange={(event) => {
-                        setDolarPTAX(parseFloat(event.target.value))
+                        if (parseFloat(event.target.value) >= 0)
+                        setDolarPTAX(parseFloat(event.target.value) || 0)
                     }}
                     label="Dólar PTAX" />
                 <TextField
