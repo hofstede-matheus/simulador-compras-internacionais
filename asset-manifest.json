@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/simulador-compras-internacionais/static/css/main.c8d669a6.chunk.css",
+    "main.js": "/simulador-compras-internacionais/static/js/main.16ac5b5f.chunk.js",
+    "main.js.map": "/simulador-compras-internacionais/static/js/main.16ac5b5f.chunk.js.map",
+    "runtime-main.js": "/simulador-compras-internacionais/static/js/runtime-main.13d2f430.js",
+    "runtime-main.js.map": "/simulador-compras-internacionais/static/js/runtime-main.13d2f430.js.map",
+    "static/js/2.1aa019ce.chunk.js": "/simulador-compras-internacionais/static/js/2.1aa019ce.chunk.js",
+    "static/js/2.1aa019ce.chunk.js.map": "/simulador-compras-internacionais/static/js/2.1aa019ce.chunk.js.map",
+    "index.html": "/simulador-compras-internacionais/index.html",
+    "static/css/main.c8d669a6.chunk.css.map": "/simulador-compras-internacionais/static/css/main.c8d669a6.chunk.css.map",
+    "static/js/2.1aa019ce.chunk.js.LICENSE.txt": "/simulador-compras-internacionais/static/js/2.1aa019ce.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.13d2f430.js",
+    "static/js/2.1aa019ce.chunk.js",
+    "static/css/main.c8d669a6.chunk.css",
+    "static/js/main.16ac5b5f.chunk.js"
+  ]
+}
