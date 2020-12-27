@@ -1,13 +1,29 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {plainToClass} from 'class-transformer';
 import banksJson from './data/banks.json';
 import {Bank} from "./model/Bank";
-import {createStyles, Grid, makeStyles, MenuItem, Select, TextField, Typography} from "@material-ui/core";
+import {createStyles, Grid, Link, makeStyles, MenuItem, Select, TextField, Typography} from "@material-ui/core";
+import {getDolarInLastWorkDay} from "./service/dolarService"
+import {IOF} from "./data/constants";
 
 function App() {
     const banks = plainToClass(Bank, banksJson);
     const [selectedBank, setSelectedBank] = useState(banks[0]);
+    const [dolarPTAX, setDolarPTAX] = useState(0)
+
+    useEffect(() => {
+        getDolarValue()
+    }, []);
+
+    async function getDolarValue() {
+        await getDolarInLastWorkDay()
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.value[0].cotacaoVenda)
+                setDolarPTAX(data.value[0].cotacaoVenda)
+            });
+    }
 
     const useStyles = makeStyles(() =>
         createStyles({
@@ -46,6 +62,10 @@ function App() {
                 "& .MuiInput-underline:hover:before": {
                     borderBottom: `2px solid ${selectedBank.textColor}`
                 },
+            },
+            spreadLinkText: {
+                fontSize: 14,
+                color: selectedBank.textColor
             },
             priceText: {
                 margin: 24,
@@ -88,23 +108,38 @@ function App() {
                     label="Valor em dólar $" />
                 <TextField
                     id="dolar-ptax"
+                    value={dolarPTAX}
                     className={classes.input}
                     type="number"
+                    onChange={(event) => {
+                        setDolarPTAX(parseFloat(event.target.value))
+                    }}
                     label="Dólar PTAX" />
                 <TextField
                     id="iof"
                     className={classes.input}
                     type="number"
+                    value={IOF}
                     label="IOF (%)" />
                 <TextField
                     id="spread"
                     className={classes.input}
                     type="number"
+                    value={selectedBank.spreadPercentage}
                     label="Spread (%)" />
+                <Typography>
+                    <Link
+                        className={classes.spreadLinkText}
+                        target="_blank"
+                        href={selectedBank.spreadLink}
+                    >
+                        * Informações oficiais de spread
+                    </Link>
+                </Typography>
                 <Typography
                     className={classes.priceText}
                 >
-                    h1. Heading
+                   oi
                 </Typography>
 
             </div>
