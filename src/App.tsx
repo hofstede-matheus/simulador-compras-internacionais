@@ -5,16 +5,28 @@ import banksJson from './data/banks.json';
 import {Bank} from "./model/Bank";
 import {createStyles, Grid, Link, makeStyles, MenuItem, Select, TextField, Typography} from "@material-ui/core";
 import {getDolarInLastWorkDay} from "./service/dolarService"
+import {calculatePurchase} from "./service/purchaseCalculatorService"
 import {IOF} from "./data/constants";
 
 function App() {
     const banks = plainToClass(Bank, banksJson);
     const [selectedBank, setSelectedBank] = useState(banks[0]);
+    const [purchaseValueInDolar, setPurchaseValueInDolar] = useState(0)
+    const [purchaseValueInReais, setPurchaseValueInReais] = useState("")
     const [dolarPTAX, setDolarPTAX] = useState(0)
 
     useEffect(() => {
         getDolarValue()
     }, []);
+
+    useEffect(() => {
+        setPurchaseValueInReais(calculatePurchase(
+            purchaseValueInDolar,
+            dolarPTAX,
+            selectedBank.spreadPercentage,
+            IOF
+        ))
+    }, [selectedBank, purchaseValueInDolar, dolarPTAX]);
 
     async function getDolarValue() {
         await getDolarInLastWorkDay()
@@ -69,7 +81,7 @@ function App() {
             },
             priceText: {
                 margin: 24,
-                fontSize: 32,
+                fontSize: 48,
                 color: selectedBank.textColor
             }
         }),
@@ -105,6 +117,10 @@ function App() {
                     className={classes.input}
                     id="value-dolar"
                     type="number"
+                    onChange={(event) => {
+                        setPurchaseValueInDolar(parseFloat(event.target.value))
+                    }}
+                    value={purchaseValueInDolar}
                     label="Valor em dólar $" />
                 <TextField
                     id="dolar-ptax"
@@ -139,7 +155,7 @@ function App() {
                 <Typography
                     className={classes.priceText}
                 >
-                   oi
+                    {purchaseValueInReais}
                 </Typography>
 
             </div>
