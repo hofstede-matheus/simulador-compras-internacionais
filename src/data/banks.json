@@ -2,7 +2,7 @@
   {
     "id": 0,
     "name": "Nubank",
-    "backgroundColor": "#612F74",
+    "backgroundColor": "#8A05BE",
     "textColor": "#FFF",
     "spreadPercentage": 4.0,
     "spreadLink": "https://nubank.com.br/contrato/"
@@ -11,7 +11,7 @@
     "id": 1,
     "name": "Inter",
     "backgroundColor": "#FF8700",
-    "textColor": "#FFF",
+    "textColor": "#000",
     "spreadPercentage": 1.0,
     "spreakLink": "https://ajuda.bancointer.com.br/pt-BR/articles/1520202-como-e-composta-a-taxa-cobrada-em-compras-internacionais"
   }
