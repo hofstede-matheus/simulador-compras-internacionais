@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "name": "Nubank",
     "backgroundColor": "#612F74",
     "textColor": "#FFF",
@@ -8,7 +8,7 @@
     "spreadLink": "https://nubank.com.br/contrato/"
   },
   {
-    "id": 2,
+    "id": 1,
     "name": "Inter",
     "backgroundColor": "#FF8700",
     "textColor": "#FFF",
