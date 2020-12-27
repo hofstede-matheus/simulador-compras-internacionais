@@ -7,5 +7,5 @@ export function calculatePurchase(
 {
     return (purchaseValueInDolar *
         (dolarPTAX * (1 + spreadPercentage / 100)) *
-        (1 + iofPercentage /100)).toFixed(2)
+        (1 + iofPercentage /100)).toFixed(2);
 }

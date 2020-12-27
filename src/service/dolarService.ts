@@ -11,8 +11,7 @@ export async function getDolarInLastWorkDay(): Promise<Response> {
             headers: {
                 "Content-Type": "application/json"
             },
-        })
-    // return moment(getLastWorkDay(moment())).format('YYYY-MM-DD');
+        });
 }
 
 function getLastWorkDay(day: Moment): Moment {
