@@ -3,17 +3,22 @@ import './App.css';
 import {plainToClass} from 'class-transformer';
 import banksJson from './data/banks.json';
 import {Bank} from "./model/Bank";
-import {createStyles, Grid, makeStyles, MenuItem, Select, TextField, Theme, Typography} from "@material-ui/core";
-
-
-
+import {createStyles, Grid, makeStyles, MenuItem, Select, TextField, Typography} from "@material-ui/core";
 
 function App() {
     const banks = plainToClass(Bank, banksJson);
     const [selectedBank, setSelectedBank] = useState(banks[0]);
 
-    const useStyles = makeStyles((theme: Theme) =>
+    const useStyles = makeStyles(() =>
         createStyles({
+            main: {
+                backgroundColor: selectedBank.backgroundColor,
+                minHeight: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+            },
             bankSelect: {
                 fontSize: 24,
                 borderColor: selectedBank.textColor,
@@ -45,6 +50,7 @@ function App() {
             priceText: {
                 margin: 24,
                 fontSize: 32,
+                color: selectedBank.textColor
             }
         }),
     );
@@ -52,7 +58,7 @@ function App() {
 
     return (
         <div className="App">
-            <header className="App-header">
+            <div className={classes.main}>
                 <Select
                     disableUnderline={true}
                     id="bank-select"
@@ -101,7 +107,7 @@ function App() {
                     h1. Heading
                 </Typography>
 
-            </header>
+            </div>
         </div>
     );
 }
